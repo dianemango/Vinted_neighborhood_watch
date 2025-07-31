@@ -1,0 +1,7 @@
+services:
+  - type: cron
+    name: vinted-tracker
+    env: python
+    buildCommand: ""
+    startCommand: "python vinted_tracker.py"
+    schedule: "*/10 * * * *"  # Toutes les 10 minutes
