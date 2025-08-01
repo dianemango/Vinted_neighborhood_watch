@@ -1,16 +1,13 @@
-from flask import Flask
-from vinted_tracker import run_tracker
+from flask import Flask, jsonify
+import json
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return "Vinted Tracker API en ligne 🚀"
+@app.route('/articles.json')
+def get_articles():
+    with open('articles.json', 'r') as f:
+        data = json.load(f)
+    return jsonify(data)
 
-@app.route('/run', methods=['GET'])
-def run():
-    run_tracker()
-    return "✅ Veille Vinted exécutée avec succès !"
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run()
